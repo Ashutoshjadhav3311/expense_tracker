@@ -25,6 +25,9 @@ app.get("/", (req, res) => {
 
 app.post("/add_transaction", (req, res) => {
   log.info("add_transaction");
+  log.info("Body:", req.body);
+  log.info("Query Parameters:", req.query);
+  log.info("Request Params:", req.params);
   res.status(200).json({
     status: "success",
     message: "Transaction received successfully",

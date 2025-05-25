@@ -28,7 +28,6 @@ app.get("/", (req, res) => {
 
 app.post("/add_transaction", (req, res) => {
   log.info("add_transaction");
-  log.info("req:", req);
   log.info("Body:", req.body);
   log.info("Header:", req.headers);
   log.info("Query Parameters:", req.query);

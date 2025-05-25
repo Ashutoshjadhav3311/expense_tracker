@@ -28,10 +28,10 @@ app.get("/", (req, res) => {
 
 app.post("/add_transaction", (req, res) => {
   log.info("add_transaction");
-  log.info("Body:", req.body);
-  log.info("Header:", req.headers);
-  log.info("Query Parameters:", req.query);
-  log.info("Request Params:", req.params);
+  log.info("Amount:", req.body.amount);
+  log.info("Card:", req.body.card);
+  log.info("Merchant:", req.body.merchant);
+  log.info("Location:", req.body.location);
   res.status(200).json({
     status: "success",
     message: "Transaction received successfully",
@@ -47,6 +47,5 @@ app.listen(port, () => {
 
 db.connectMongo();
 
-//1.crypto
-// 2.db.js
+// 2.db.js add transaction to db
 //3.env file

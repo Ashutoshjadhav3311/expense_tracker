@@ -17,6 +17,9 @@ let log = bunyan.createLogger({ name: "tracker-index.js" });
 //   issuerBaseURL: "https://dev-3soy7ncemdjucvjx.us.auth0.com",
 // };
 // app.use(auth(config));
+// Middleware for parsing JSON and URL-encoded data
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.send("Hey welcome to expense tracker");
@@ -25,7 +28,9 @@ app.get("/", (req, res) => {
 
 app.post("/add_transaction", (req, res) => {
   log.info("add_transaction");
+  log.info("req:", req);
   log.info("Body:", req.body);
+  log.info("Header:", req.headers);
   log.info("Query Parameters:", req.query);
   log.info("Request Params:", req.params);
   res.status(200).json({

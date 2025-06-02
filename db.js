@@ -24,5 +24,18 @@ async function connectMongo() {
     log.info("Error while connecting to mongo db", err);
   }
 }
+async function addTransaction(payload) {
+  try {
+    const db = "main";
+    let collection = "transactions";
+    const result = await client
+      .db(db)
+      .collection(collection)
+      .insertOne(payload);
 
-module.exports = { connectMongo };
+    log.info("Transaction saved successfully:", result.insertedId);
+  } catch (error) {
+    log.info("Error while saving transaction in mongo db", err);
+  }
+}
+module.exports = { connectMongo, addTransaction };
